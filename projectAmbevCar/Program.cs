@@ -69,9 +69,9 @@ namespace Sistema_de_Locadora_Ambev
         {
             baseDeVeiculos = new string[3, 4]
             {
-                {"Fusca","1982","sim","Bom, se estragar uma alicate e um arame resolve"},
-                {"Opala","1999","sim","Sempre abastesa"},
-                {"Marea","1999","não","Estragada explodiu"},
+                {"Vectra","2011","sim","Bom estado de conservação"},
+                {"Cruze","2015","sim","Excelente estado de conservação"},
+                {"Fusion","2014","não","Em manutenção"},
 
             };
         }
@@ -80,18 +80,29 @@ namespace Sistema_de_Locadora_Ambev
         /// </summary>
         /// <param name="ModeloDoVeiculo">Nome do modelo a ser pesquisado</param>
         /// <returns>Vai retornar verdadeiro em caso do veiculo estiver disponivel para alocação</returns>
-        public static bool? pesquisaDeVeiculo(string ModeloDoVeiculo)
+        public static bool? pesquisaDeVeiculo(ref string ModeloDoVeiculo)
         {
-            Console.WriteLine("Nenhum livro com esse nome foi encontrado. Deseja buscar novamente?");
+            for (int i = 0; i < baseDeVeiculos.GetLength(0); i++)
+            {
+                if (PesquisarDeNovo(ModeloDoVeiculo, baseDeVeiculos[i, 0]))
+                {
+                    Console.WriteLine($"O veiculo:{ModeloDoVeiculo}" +
+                          $" pode ser alocado?:{baseDeVeiculos[i, 2]}");
+
+                    return baseDeVeiculos[i, 1] == "sim";
+                }
+            }
+
+            Console.WriteLine("Nenhum veiculo com esse nome foi encontrado. Deseja buscar novamente?");
             Console.WriteLine("Digite o número da opção desejada. Sim(1) ou Não(2)");
             int.TryParse(Console.ReadKey().KeyChar.ToString(), out int opcao);
 
             if (opcao == 1) ;
             {
-                Console.WriteLine("Digite o nome do linho a ser pesquisado:");
+                Console.WriteLine("Digite o nome do veiculo a ser pesquisado:");
                 ModeloDoVeiculo = Console.ReadLine();
 
-                return PesquisarDeNovo(ModeloDoVeiculo);
+                return pesquisaDeVeiculo(ref ModeloDoVeiculo);
 
             }
             return null;
@@ -121,7 +132,11 @@ namespace Sistema_de_Locadora_Ambev
             MostrarMenuInicial("Alocar um veiculo");
 
             var ModeloDoVeiculo = Console.ReadLine();
-            if (pesquisaDeVeiculo(ModeloDoVeiculo))
+            var resultadoPesquisa = pesquisaDeVeiculo(ref ModeloDoVeiculo);
+
+            if (resultadoPesquisa != null && resultadoPesquisa == true)
+
+
             {
                 Console.Clear();
                 MostrarSejaBemVindo();
@@ -144,7 +159,9 @@ namespace Sistema_de_Locadora_Ambev
             MostrarMenuInicial("Alocar Veiculo");
 
             var ModeloDoVeiculo = Console.ReadLine();
-            if (pesquisaDeVeiculo(ModeloDoVeiculo))
+            var resultadoPesquisa = pesquisaDeVeiculo(ref ModeloDoVeiculo);
+
+            if (resultadoPesquisa !=null && resultadoPesquisa == true)
             {
                 Console.Clear();
                 MostrarSejaBemVindo();
@@ -177,9 +194,11 @@ namespace Sistema_de_Locadora_Ambev
             MostrarListaVeiculo();
 
             var ModeloDoVeiculo = Console.ReadLine();
+            var resultadoPesquisa = pesquisaDeVeiculo(ref ModeloDoVeiculo);
 
-            if (!pesquisaDeVeiculo(ModeloDoVeiculo))
-            {
+
+            if (resultadoPesquisa != null && resultadoPesquisa == false)
+                {
                 Console.Clear();
                 MostrarSejaBemVindo();
                 Console.WriteLine("Você deseja desalocar este veiculo? sim( 1 ) || não( 2 )");

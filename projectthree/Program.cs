@@ -77,7 +77,7 @@ namespace projectthree
         /// </summary>
         /// <param name="nomeLivro">Nome do livro a ser pesquisado</param>
         /// <returns>Retorna verdadeiro em caso o livro estiver livre para alocação.</returns>
-        public static bool? PesquisaLivroParaAlocacao(string nomeLivro)
+        public static bool? PesquisaLivroParaAlocacao(ref string nomeLivro)
         {
             for (int i = 0; i < Basedelivros.GetLength(0); i++)
             {
@@ -100,7 +100,7 @@ namespace projectthree
                 Console.WriteLine("Digite o nome do linho a ser pesquisado:");
                 nomeLivro = Console.ReadLine();
 
-                return PesquisaLivroParaAlocacao(nomeLivro);
+                return PesquisaLivroParaAlocacao(ref nomeLivro);
 
             }
             return null;
@@ -134,7 +134,7 @@ namespace projectthree
             MostrarMenuInicialLivros("Alocar um livro:");
 
             var nomedolivro = Console.ReadLine();
-            var resultadoPesquisa = PesquisaLivroParaAlocacao(nomedolivro);
+            var resultadoPesquisa = PesquisaLivroParaAlocacao(ref nomedolivro);
 
             if (resultadoPesquisa != null && resultadoPesquisa == true)
             {
@@ -170,10 +170,10 @@ namespace projectthree
             MostrarListaDeLivros();
 
             var nomedolivro = Console.ReadLine();
-            var resultadoPesquisa = PesquisaLivroParaAlocacao(nomedolivro);
+            var resultadoPesquisa = PesquisaLivroParaAlocacao(ref nomedolivro);
 
-            if (!PesquisaLivroParaAlocacao(nomedolivro) != null
-                && PesquisaLivroParaAlocacao(nomedolivro) == false)
+            if (!PesquisaLivroParaAlocacao(ref nomedolivro) != null
+                && PesquisaLivroParaAlocacao(ref nomedolivro) == false)
             {
                 Console.Clear();
                 MostrarSejaBemVindo();
