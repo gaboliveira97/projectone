@@ -17,6 +17,17 @@ namespace Lista_de_nomes
 
                 //Aqui como estamos usando apenas uma referencia da nossa lista colocamos ref ao passar ela no metodo
                 CarregaInformacoesEListaElasEmTela(ref listaDeNome);
+
+                //Após carregar as informações em tela ele espera comando.
+                Console.ReadKey();
+
+                //Indicamos que o usuario precisa indicar um numero de identificação para registro.
+                Console.WriteLine("Informe o ID do registro a ser pesquisado:");
+
+                //Aqui como realizamos a pesquisa apenas na chamada
+                //Passamos a nossa lista normalmente pois não iremos alterar mas apenas pesquisa a informação
+                //Após a virgula temos o console readLine que espera nosso identificador unico
+                PesquisandoInformacoesNaNossaLista( ref listaDeNome, Console.ReadLine());
             }
         }
             /// <summary>
@@ -51,7 +62,7 @@ namespace Lista_de_nomes
             /// <param name="arrayBi">Nossa coleção de informações</param>
             /// <param name="pId">Nosso identificador unico</param>
 
-            public static void PesquisandoInformacoesNaNossaLista(ref string[,] arrayBi, string pID)
+            public static void PesquisandoInformacoesNaNossaLista(string[,] arrayBi, string pID)
 
             {
                 for (int i = 0; i < arrayBi.GetLength(0); i++)
