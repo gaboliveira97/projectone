@@ -20,7 +20,8 @@ namespace Cadastro_de_valores
 
             NovoRegistro(ref listadeNome, ref IdParaLista);
 
-            Console.ReadKey();
+            Console.ReadKey();     
+
         }
 
         public static void NovoRegistro(ref String[,] listadeNome, ref int IdParaLista)
