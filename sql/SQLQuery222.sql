@@ -116,19 +116,19 @@
 
 --23)
 
-select SUM (Quantidade) as 'Quantidade de vendas'
+--select SUM (Quantidade) as 'Quantidade de vendas'
   
-From Vendas
-WHERE UsuInc = 1
+--From Vendas
+--WHERE UsuInc = 1
 
---24)
+----24)
 
-select SUM (Quantidade) as 'Quantidade de vendas'
+--select SUM (Quantidade) as 'Quantidade de vendas'
   
-From Vendas
-WHERE UsuInc = 2
+--From Vendas
+--WHERE UsuInc = 2
 
-order by 'Quantidade de vendas'
+--order by 'Quantidade de vendas'
 
 --select SUM (Quantidade) as 'Quantidade de vendas'
 --  From Vendas
@@ -139,7 +139,7 @@ order by 'Quantidade de vendas'
   
 --From Vendas
 
---27)
+
 
 
 
