@@ -1,0 +1,44 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Projeto Web API</title>
+    <link href="css/prettify.css" rel="stylesheet">
+    <link href="css/hemisu-light.css" rel="stylesheet">
+    <link href="css/screen.css" rel="stylesheet" media="screen">
+    <link href="css/classic.css" rel="stylesheet" media="screen">
+</head>
+<body>
+    <form id="formUsu" method="post">
+        <input type="text" name="tbxusuario" placeholder="Informe o nome do usuario" />
+        <input type="submit" value="Cadastrar" />
+    </form>
+
+    <div id="exemplo">
+
+    </div>
+
+    <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script type="text/javascript"
+            src="jquery.columns.min.js"></script>
+    <script>
+        function CadastraUsuario() {
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:50370/Api/Usuarios',
+                data: JSON.stringify($('#formUsu').serializeArray()),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json'
+            });
+            function GridRefresh() {
+
+            }
+            $.get('http://localhost:50370/Api/Values', function (dataApi) {
+                $('#exemplo').columns({ data: dataApi })
+            });
+        }
+    </script>
+
+</body>
+</html> 

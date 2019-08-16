@@ -1,0 +1,84 @@
+<html>
+<head>
+    <style>
+        /*Classe especifica*/
+        .ButtomClass {
+            width: 100px;
+            height: 100px;
+        }
+
+        .esferasdeGiomar {
+            width: 10px;
+            height: 10px;
+            background-color: #000;
+            border: 1px solid #808080;
+            border-radius: 100%;
+            position:absolute;
+        }
+        /*Para todas as tags input*/
+        input {
+            width: 500px;
+            height: 500px;
+            border-radius: 25%;
+        }
+
+        .screen {
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="screen">
+        <div id="GiomarBalls" increment="true" posleft="0" class="esferasdeGiomar"></div>
+    </div>
+    <div>
+        <label id="lblGiomarBallsCount">Contador de esferas do Giomar:{0} </label>
+    </div>
+    <div>
+        <input id="bntClickMe"
+               class="ButtomClass"
+               type="button"
+               value="Adiciona as esferas do giomar" 
+               onclick ="CriarGiomar()" />
+    </div>
+    <script>
+        setInterval(Movimento, 10);
+        function Movimento() {
+            var esferasGiomar = document.getElementsByClassName('esferasDeGiomar');
+            for (var i = 0; i < esferasGiomar.length; i++) {
+                MovimentoX(esferasGiomar[i])
+                //parte que movimenta as esferas
+            }
+        }
+        function MovimentoX(object) {
+            var posLeft = object.getAttribute("posleft");
+            var increment = object.getAttribute("incrementX");
+            var Idelement = object.getAttribute("Id");
+
+            if (posLeft < 500 && increment === "true") {
+                object.style.left = (posLeft++).toString() + "px";
+            }
+            else {
+                object.style.left = (posLeft--).toString() + "px";
+                increment = false
+
+                if (posLeft <= 0)
+                    increment = true
+            }
+            document.getElementById(Idelement).setAttribute("increment", increment);
+            document.getElementById(Idelement).setAttribute("posleft", posLeft);
+            //object.getAttribute("increment", increment);
+            //object.getAttribute("posleft", posLeft);
+        }
+        function CriarGiomar() {
+            var elementDoc = document.getElementsByClassName('screen')[0];
+            var elementLbl = document.getElementById('lblGiomarBallsCount');
+            var esferasGiomar = document.getElementsByClassName('esferasDeGiomar').length;
+
+                elementDoc.innerHTML += "<div id="+esferasGiomar+" increment=\"true\" posleft=\"0\" class=\"esferasDeGiomar\"></div>"
+            elementLbl.innerHTML = "Contador de esferas de giomar:" + esferasGiomar;
+        }
+    </script>
+</body>
+</html>

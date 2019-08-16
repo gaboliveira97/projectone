@@ -1,0 +1,208 @@
+﻿
+<head>
+    <style>
+
+        body {
+            background-image: url("fundo.jpeg");
+            background-repeat: no-repeat;
+            background-size: 30%;
+            font-size: 25px;
+            font-family: 'Raleway', 'arial';
+            font-weight: 100;
+            background-position: center;
+        }
+
+        @media screen and (max-width: 1300px) {
+
+        {
+            /*background-size: contain;*/
+            /*background-repeat: no-repeat;*/
+            background-size: 45%;
+            font-size: 45px;
+            font-family: 'Raleway', 'arial';
+            font-weight: 100;
+            background-position: center;
+        }
+
+        }
+
+        #container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #logo_bar {
+            background: rgba(0, 0, 0, 0.5);
+            width: 300px;
+            color: white;
+            margin-bottom: -30px;
+            padding: 10px 0;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        #logo {
+            max-width: 100px;
+            max-height: 100px;
+            vertical-align: middle;
+        }
+
+        #form_box {
+            background: rgba(0, 0, 0, 0.5);
+            width: 300px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        #form_heading {
+            color: #1265c4;
+            padding: 15px 0 0 10px;
+            font-family: 'Raleway', 'arial';
+            font-weight: 100;
+            font-size: 1.5em;
+        }
+
+        #font_20 {
+            font-size: 15px;
+        }
+
+        input {
+            background: none;
+            -webkit-transition: all 0.30s ease-in-out;
+            -moz-transition: all 0.30s ease-in-out;
+            -ms-transition: all 0.30s ease-in-out;
+            -o-transition: all 0.30s ease-in-out;
+            outline: none;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #DDDDDD;
+            color: white;
+            font-family: 'Raleway', 'arial';
+            font-weight: 100;
+            font-size: 17px;
+        }
+
+            input:focus {
+                box-shadow: 0 0 10px rgb( 0, 132, 255);
+                padding: 10px;
+                margin: 10px;
+                border: 1px solid rgb( 0, 132, 255);
+            }
+
+            input[type=submit]:hover {
+                cursor: pointer;
+            }
+
+        #credits_box {
+            background: rgba(0, 0, 0, 0.4);
+            color: white;
+            width: 380px;
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            font-family: 'Raleway', 'arial';
+            font-weight: 100;
+            font-size: 20px;
+            text-align: center;
+            padding: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: antiquewhite;
+            cursor: pointer;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+    <div>
+
+    </div>
+    <html lang="en">
+
+    <head>
+        <title>Login Page</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link href='https://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
+    </head>
+
+    <body>
+        <div id="container">
+            <div id="logo_bar">
+                <img id="logo" src="hbsislogo2015.png" alt="logo">
+            </div>
+            <div id="form_box">
+                <form>
+                    <p id="form_heading">Login</p>
+                    <input id="nome" name="nome" type="text" placeholder="User"><br />
+                    <input type="password" placeholder="Senha"><br />
+                    <input type="checkbox" id="checkbox"><label for="checkbox" style="color:white; font-size:15px;">Lembre-me</label><br />
+                    <button style="color:white; font-size:15px; width:250px; height:50px;" onclick="Pesquisar()">logar</button><br />
+                    <a id="font_20">Esqueceu sua senha?</a><br /><br />
+                </form>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <script>
+            function teste() {
+                alert("funciona");
+            }
+            var foo = { nome: 'Gabriel', sobrenome: 'Oliveira', idade: 21 };
+
+            var bar = Object.create(foo);
+
+            bar.temskol = true;
+
+            bar.nome;
+
+            bar.sobrenome;
+
+            bar.data = [
+                {
+                    "Id": "1",
+                    "Nome": "Gabriel Oliveira",
+                    "Idade": "21"
+                },
+                {
+                    "Id": "2",
+                    "Nome": "Rudi Manja",
+                    "Idade": "24"
+                }];
+
+            function Pesquisar() {
+                $.each(bar.data,
+                    function Comparar(index, object) {
+                        var contentVal = $('#nome').val();
+
+                        if (object.Nome(contentVal) >= -1) {
+                            alert('Encontrado');
+                        }
+                    });
+            }
+        </script>
+
+    </body>
+
+</html>
+
+</body>
+
+
